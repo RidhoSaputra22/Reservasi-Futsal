@@ -11,8 +11,10 @@ switch($role){
     case 'user':
         $sql_user = "SELECT * FROM tb_users where username = '$username' AND password ='$password' AND role = '$role'";
         $cek_user = mysqli_query($conn, $sql_user);
+        $data_user = mysqli_fetch_assoc($cek_user);
         if (mysqli_num_rows($cek_user) > 0) {
-            $_SESSION['user'] = "user";
+            $_SESSION['id'] = $data_user['id_user'];
+            $_SESSION['user'] = $data_user['nama'];
             $_SESSION['login'] = $username;
             exit('user');
         }else{

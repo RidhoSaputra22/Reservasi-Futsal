@@ -1,5 +1,7 @@
 <?php
 $URL = "index.php"
+
+
 ?>
 <link rel="stylesheet" href="style.css">
 
@@ -15,7 +17,9 @@ $URL = "index.php"
         </ul>
     </div>
     <div class="actions">
-        <a href="logout.php">Masuk</a>
+        <?= (isset($_SESSION['id'])) ? '<a href="akun.php">Akun</a>':'<a href="logout.php">Masuk</a>'?>
+        <a href="logout.php">Logout</a>
+        
     </div>
 </nav>
 

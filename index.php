@@ -1,5 +1,13 @@
 <?php
 session_start();
+require "conn.php";
+
+if(isset($_SESSION)){
+    $id_user = $_SESSION['id'];
+    $nama = $_SESSION['user'];
+    $isLogin = TRUE;
+
+}
 
 ?>
 
@@ -16,9 +24,9 @@ session_start();
 
 <?php
     include("layout/navbar.php");
-    ?>
 
-    <section id="banner">
+    ?>
+<section id="banner">
         <div class="shape"></div>
         <div class="text">
             <div class="title">
@@ -51,20 +59,24 @@ session_start();
         <div class="title">Lapangan Tersedia</div>
 
         <div class="main">
-            <a href="detail.php" class="card">
+            <?php
+             $q = "SELECT * FROM tb_lapangan";
+             $res = mysqli_query($conn, $q);
+             $count = 1;
+             while($data = mysqli_fetch_assoc($res)){
+                $id = $data['id_lapangan'];
+            ?>
+
+            <a href="detail.php?id=<?= $id?>" class="card">
                 <img src="assets/lapangan.png" alt="">
             </a>
-            <a href="detail.php" class="card">
-                <img src="assets/lapangan.png" alt="">
-            </a>
-            <a href="detail.php" class="card">
-                <img src="assets/lapangan.png" alt="">
-            </a>
-            <a href="detail.php" class="card">
-                <img src="assets/lapangan.png" alt="">
-            </a>
+
+            <?php
+             }
+            ?>
         </div>
     </section>
+   
 
     <?php
     include("layout/footer.php");

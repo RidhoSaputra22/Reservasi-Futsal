@@ -5,6 +5,7 @@ $username = "root";
 $password = "";
 $db = "reservasi_lapangan";
 
+date_default_timezone_set('Asia/Makassar');
 $conn = mysqli_connect($server, $username, $password, $db);
 
 function uploadFoto($location){
