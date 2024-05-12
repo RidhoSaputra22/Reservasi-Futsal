@@ -206,6 +206,7 @@ section {
 
     img{
         height: 440px;
+        width: auto;
         border: 10px solid #FFFFFF;
     }
 

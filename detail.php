@@ -57,7 +57,7 @@ if($_SESSION['id']){
 
 
     <section id="detail-product">
-        <img src="assets/lapangan.png" alt="">
+        <img src="assets/img/lapangan/<?= $data['foto']?>" alt="">
         <div class="detail">
 
             <div class="text">

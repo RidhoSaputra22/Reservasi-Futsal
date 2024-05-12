@@ -35,13 +35,14 @@ require "../conn.php"
                 <tr>
                     <td><?= $count++?></td>
                     <td><?= $data['nama']?></td>
-                    <td><?= $data['id_lapangan']?></td>
+                    <td><?= $data['id_reservasi']?></td>
                     <td><?= $data['masuk']?></td>
-                    <td><?= $data['keluar']?></td>                    
+                    <td><?= $data['keluar']?></td>
                     <td>
                         <!-- CONFIRM BTN -->
-                        <button type="button" class="btn btn-<?= ($data['status'] == "Bayar") ? "primary":"warning"?> w-100 <?= ($status == 'sudah') ? "d-none":""?>" data-bs-toggle="modal"
-                            data-bs-target="#confirm1">
+                        <button type="button" id="confirm-btn"
+                            class="btn btn-<?= ($data['status'] == "Selesai") ? "primary":"warning"?> w-100"
+                            data-bs-toggle="modal" data-bs-target="#confirm" data-id="<?= $data['id_reservasi']?>">
                             <i class="m-1">
                             </i><?= $data['status']?>
                         </button>
@@ -58,70 +59,70 @@ require "../conn.php"
                                 </svg></i>HAPUS
                         </button>
                     </td>
-                   
+
 
                     <!-- MODAL DELETE -->
-                    <div class="modal fade" id="DELETE1" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-4" id="exampleModalLabel">Hapus</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
 
-                                <form action="#" method="post">
-                                    <input type="text" value="1" name="id" style="display: none">
-
-                                    <div class="modal-body">
-                                        <h1 class="fs-5">Anda Yakin Ingin Menghapus?</h1>
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Tidak</button>
-                                        <button type="submit" class="btn btn-primary" name="hapus">Iya</button>
-                                    </div>
-                                </form>
-
-                            </div>
-                        </div>
-                    </div>
 
                 </tr>
                 <?php
                  }
                 ?>
 
-                <div class="modal fade" id="confirm1" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                                    <h1 class="modal-title fs-4" id="exampleModalLabel">Hapus</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
 
-                            <form action="#" method="post">
-                                <input type="text" value="1" name="id" style="display: none">
-
-                                <div class="modal-body">
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Tidak</button>
-                                    <button type="submit" class="btn btn-primary" name="konfirmasi">Iya</button>
-                                </div>
-                            </form>
-
-                        </div>
-                    </div>
-                </div>
             </tbody>
         </table>
 
     </div>
 </div>
+<div class="modal fade" id="confirm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-4" id="exampleModalLabel">Konfirmasi Reservasi</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form action="#" method="post">
+                <input type="text" value="1" name="id" style="display: none">
+
+                <div class="modal-body">
+                 <h5>Anda yakin ingin konfirmasi</h5>
+                 <input type="num" id="cid" hidden>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                    <button type="button" class="btn btn-primary" onclick="confirm()">Iya</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-4" id="exampleModalLabel">Hapus</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form action="#" method="post">
+                <input type="text" value="1" name="id" style="display: none">
+
+                <div class="modal-body">
+                    <h1 class="fs-5">Anda Yakin Ingin Menghapus?</h1>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                    <button type="submit" class="btn btn-primary" name="hapus">Iya</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<script src="pages/reservasi.js"></script>

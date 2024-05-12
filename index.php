@@ -68,7 +68,7 @@ if(isset($_SESSION)){
             ?>
 
             <a href="detail.php?id=<?= $id?>" class="card">
-                <img src="assets/lapangan.png" alt="">
+                <img src="assets/img/lapangan/<?= $data['foto']?>" alt="">
             </a>
 
             <?php

@@ -3,12 +3,6 @@
 require '../../conn.php';
 session_start();
 
-if (isset($_SESSION['id'])) {
-    $id_user = $_SESSION['id'];
-} else {
-    echo "NOT-LOGIN";
-}
-
 
 
 // print_r($_POST);
@@ -17,6 +11,12 @@ if (isset($_SESSION['id'])) {
 $aksi = $_POST['aksi'];
 switch ($aksi) {
     case 'reservasi':
+        if (isset($_SESSION['id'])) {
+            $id_user = $_SESSION['id'];
+        } else {
+            exit("NOT-LOGIN");
+        }
+        
         $id_lapangan = $_POST['id_lapangan'];
         $nama = $_POST['nama'];
         $hp = $_POST['hp'];
@@ -49,28 +49,21 @@ switch ($aksi) {
 
         break;
 
-    case 'edit':
-        $nama = $_POST['nama'];
-        $alamat = $_POST['alamat'];
-        $hp = $_POST['hp'];
-        // $foto = $_POST['foto'];
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        $role = "user";
-
-        $nmFoto = $_POST['nmfoto'];
+    case 'confirm':
         $id = $_POST['id'];
-        $tbName = "tb_users";
-        $fotoField = "foto";
-        $idField = "id_user";
 
-        updateFoto($nmFoto, $tbName, $id, $idField, $location);
+        $sql = "UPDATE `tb_reservasi` SET `status` = 'Selesai' WHERE `tb_reservasi`.`id_reservasi` = $id";
 
-        $sql = "UPDATE tb_users set nama = '$nama', alamat = '$alamat', hp = '$hp' where id_user ='$id'";
         if (mysqli_query($conn, $sql)) {
-            exit('sukses');
+            exit("sukses");
+        } else {
+            exit("gagal");
         }
+        
+
         break;
+
+
     case 'hapus':
         $id = $_POST['id'];
 
