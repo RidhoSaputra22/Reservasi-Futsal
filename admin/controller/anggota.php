@@ -48,7 +48,7 @@ switch ($aksi) {
 
         updateFoto($nmFoto, $tbName, $id, $idField, $location);
 
-        $sql = "UPDATE tb_users set nama = '$nama', alamat = '$alamat', hp = '$hp' where id_user ='$id'";
+        $sql = "UPDATE tb_users set nama = '$nama', alamat = '$alamat', hp = '$hp', username='$username', password='$password' where id_user ='$id'";
         if (mysqli_query($conn, $sql)) {
             exit('sukses');
         }

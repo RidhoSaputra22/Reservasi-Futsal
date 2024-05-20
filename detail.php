@@ -8,7 +8,7 @@ $data = mysqli_fetch_assoc($req);
 $now_date = Date('Y-m-d');
 $now_time = Date('H:i');
 
-if($_SESSION['id']){
+if(isset($_SESSION['id'])){
     $id = $_SESSION['id'];
     $res_user = mysqli_query($conn, "SELECT nama, hp FROM tb_users WHERE role = 'user' AND id_user = '$id'");
     $data_user = mysqli_fetch_assoc($res_user);
@@ -31,13 +31,17 @@ if($_SESSION['id']){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservasi Futsal</title>
 
-    
-    
+
+
     <!-- JQUERY -->
     <script src="assets/jquery/dist/jquery.min.js"></script>
     <script src="assets/DataTables/datatables.js"></script>
 
-    
+    <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
+        data-client-key="SB-Mid-client-Sh3wGKHVSP3NM6lF" async></script>
+
+
+
     <link rel="stylesheet" href="assets/DataTables/datatables.css">
 
     <!-- SWEETALERT -->
@@ -91,7 +95,7 @@ if($_SESSION['id']){
                 </tr>
             </thead>
             <tbody>
-            <?php
+                <?php
                 $q_l = "SELECT * FROM tb_reservasi WHERE id_lapangan = '$_GET[id]'";
                 $res_l = mysqli_query($conn, $q_l);
                 $count_l = 1;
@@ -160,8 +164,6 @@ if($_SESSION['id']){
 
 
     <script type="text/javascript">
-    
-    
     let table = new DataTable('#myTable', {
         // options
         lengthChange: false,

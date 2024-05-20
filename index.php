@@ -2,7 +2,7 @@
 session_start();
 require "conn.php";
 
-if(isset($_SESSION)){
+if(isset($_SESSION['id'])){
     $id_user = $_SESSION['id'];
     $nama = $_SESSION['user'];
     $isLogin = TRUE;

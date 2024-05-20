@@ -37,7 +37,7 @@ switch ($aksi) {
         if (mysqli_num_rows($isReservasi) > 0) {
             exit("terisi");
         } else {
-            $sql = "INSERT INTO `tb_reservasi` (`id_reservasi`, `id_user`, `id_lapangan`, `nama`, `hp`, `tanggal`, `masuk`, `keluar`,`total_harga`, `status`) VALUES (NULL, '$id_user', '$id_lapangan', '$nama', '$hp', '$tanggal', '$jam', '$jam_keluar', '$total_harga', 'Belum')";
+            $sql = "INSERT INTO `tb_reservasi` (`id_reservasi`, `id_user`, `id_lapangan`, `nama`, `hp`, `tanggal`, `masuk`, `keluar`,`total_harga`, `status`) VALUES (NULL, '$id_user', '$id_lapangan', '$nama', '$hp', '$tanggal', '$jam', '$jam_keluar', '$total_harga', 'Selesai')";
 
             if (mysqli_query($conn, $sql)) {
                 exit("sukses");

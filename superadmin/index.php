@@ -17,6 +17,10 @@ if ($_SESSION['login']=="") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Superadmin</title>
 
+    <!-- <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script> -->
+    <script src="../assets/sheetJS/dist/xlsx.full.min.js"></script>
+
+
 
     <?php
     include("../assets/assets.php")

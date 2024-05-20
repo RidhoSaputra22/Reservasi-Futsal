@@ -93,6 +93,7 @@ if ($_SESSION['id']) {
         <table class="table" id="myTable">
             <thead>
                 <tr>
+                    <th>No.</th>
                     <th>Tanggal</th>
                     <th>Nama</th>
                     <th>Masuk</th>
@@ -110,6 +111,7 @@ if ($_SESSION['id']) {
                 ?>
 
                 <tr>
+                    <td><?= $count_l++?>.</td>
                     <td><?= $data_l['tanggal']?></td>
                     <td><?= $data_l['nama']?></td>
                     <td><?= $data_l['masuk']?></td>
