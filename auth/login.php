@@ -44,4 +44,23 @@ switch($role){
             exit('gagal'); 
         }
         break;
+        case 'regist':
+            $nama = $_POST['nama'];
+            $alamat = $_POST['alamat'];
+            $hp = $_POST['hp'];
+            // $foto = $_POST['foto'];
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $role = "user";
+    
+            $newfilename = uploadFoto("../assets/img/users/");
+    
+            $sql = "INSERT INTO `tb_users` (`id_user`, `nama`, `alamat`, `hp`, `foto`, `username`, `password`, `role`) VALUES (NULL, '$nama', '$alamat', '$hp', '$newfilename', '$username', '$password', '$role')";
+    
+            if (mysqli_query($conn, $sql)) {
+                exit("sukses");
+            } else {
+                exit("gagal");
+            }
+            break;
 }

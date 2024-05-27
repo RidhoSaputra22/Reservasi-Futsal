@@ -39,7 +39,10 @@
 
             <button type="button" class="btn btn-primary input" id="login">Submit</button>
             <a href="index.php" class="btn btn-primary " id="login">Masuk sebagai tamu</a>
+            <div class="d-flex justify-content-end">
 
+                <a href="regist.php">Belum Pernah Daftar?</a>
+            </div>
         </form>
 
     </div>
