@@ -131,15 +131,19 @@ require "../conn.php"
             <form method="post" enctype="multipart/form-data">
                 <div class="modal-body ">
 
-
-                    <label for="" class="mt-3">Jenis</label>
-                    <input type="text" class="form-control" id="tjenis" value="">
-
                     <label for="" class="mt-3">Harga</label>
                     <input type="number" class="form-control" id="tharga" value="">
 
                     <label for="" class="mt-3">Deskripsi</label>
                     <textarea name="" id="tdeskripsi" class="form-control" rows="5"></textarea>
+
+                    <label for="" class="mt-3">Jenis</label>
+                    <select name="" id="tjenis" class="d-block p-2 w-100">
+                        <option value="Rumput Biasa">Biasa</option>
+                        <option value="Rumput Sintetis">Rumput Sintetis</option>
+                        <option value="Rumput Asli">Rumput Asli</option>
+                    </select>
+
                     <p for="" class="mt-3">Foto</p>
                     <!-- <img src="uploads/img/" alt="" style="width:150px; height: 100px"> -->
                     <input type="file" class="form-control mt-3" id="tfoto" onchange="validasiFile()">
@@ -166,7 +170,7 @@ require "../conn.php"
             <form method="post" enctype="multipart/form-data">
                 <div class="modal-body ">
 
-                <input type="text" id="uid" class="form-control" hidden disabled>
+                    <input type="text" id="uid" class="form-control" hidden disabled>
 
 
 
@@ -183,7 +187,7 @@ require "../conn.php"
                     <input type="file" class="form-control mt-3" id="ufoto" onchange="return validasiFile1()">
                     <div class="row">
                         <div class="col-md mt-3" id="pratinjauGambar0">
-                            
+
                         </div>
 
                         <div class="col-md mt-3" id="pratinjauGambar1"></div>

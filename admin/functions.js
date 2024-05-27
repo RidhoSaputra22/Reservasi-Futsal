@@ -1,10 +1,10 @@
-console.log("Functions JS Called");
+console.log("Functions s JS Called");
 function validasiFile() {
     var inputFile = document.getElementById('tfoto');
     var pathFile = inputFile.value;
-    var ekstensiOk = /(\.jpg)$/i;
+    var ekstensiOk =  /(\.jpg|\.png|\.gif)$/i;
     if (!ekstensiOk.exec(pathFile)) {
-        Swal.fire('', 'Silakan upload file yang memiliki ekstensi (.jpg)', 'info');
+        Swal.fire('', 'Silakan upload file yang memiliki ekstensi (.jpg, .png, .gif)', 'info');
         inputFile.value = '';
         return false;
     } else {
@@ -23,9 +23,9 @@ function validasiFile() {
 function validasiFile1() {
     var inputFile = document.getElementById('ufoto');
     var pathFile = inputFile.value;
-    var ekstensiOk = /(\.jpg)$/i;
+    var ekstensiOk =  /(\.jpg|\.png|\.gif)$/i;
     if (!ekstensiOk.exec(pathFile)) {
-        Swal.fire('', 'Silakan upload file yang memiliki ekstensi (.jpg)', 'info');
+        Swal.fire('', 'Silakan upload file yang memiliki ekstensi (.jpg, .png, .gif)', 'info');
         inputFile.value = '';
         return false;
     } else {
