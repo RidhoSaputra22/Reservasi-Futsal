@@ -1,3 +1,7 @@
+<?php
+$nama = $_SESSION['user'];
+?>
+
 
 <nav>
     <div class="main">
@@ -8,7 +12,7 @@
                     d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
             </svg>
         </div>
-        <div class="logo">Selamat Datang, Admin</div>
+        <div class="logo">Selamat Datang, <?= $nama?></div>
         <div class="actions">
 
             <div class="user">

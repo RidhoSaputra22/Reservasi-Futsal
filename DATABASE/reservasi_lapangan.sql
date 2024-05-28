@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 20, 2024 at 02:49 AM
+-- Generation Time: May 28, 2024 at 04:10 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -28,11 +28,11 @@ SET time_zone = "+00:00";
 -- (See below for the actual view)
 --
 CREATE TABLE `lapangan_kosong` (
-`id_lapangan` int
-,`id_reservasi` int
+`id_reservasi` int
 ,`id_user` int
-,`keluar` time
+,`id_lapangan` int
 ,`masuk` time
+,`keluar` time
 ,`status` varchar(255)
 );
 
@@ -62,7 +62,10 @@ INSERT INTO `tb_lapangan` (`id_lapangan`, `kondisi`, `status`, `jenis`, `harga`,
 (11, 'Baik', 'ok', 'Biasa', 20000, 'kkks', '1715463268.jpg'),
 (12, 'Baik', 'ok', 'Biasa', 20000, 'kkks', '1715463288.jpg'),
 (13, 'Baik', 'ok', 'Biasa', 250000, 'kkks', '1715463318.jpg'),
-(15, 'Baik', 'Tersedia', '131', 75000, 'jbjb', '1715519452.jpg');
+(15, 'Baik', 'Tersedia', '131', 75000, 'jbjb', '1715519452.jpg'),
+(16, 'Baik', 'Tersedia', 'Sintetis', 120000, 'bla', '1716836069.jpg'),
+(17, 'Baik', 'Tersedia', 'Rumput Asli', 2432, 'q42q', '1716836113.jpg'),
+(18, 'Baik', 'Tersedia', 'Rumput Biasa', 23, '2432', '1716836340.png');
 
 -- --------------------------------------------------------
 
@@ -103,26 +106,9 @@ CREATE TABLE `tb_reservasi` (
 --
 
 INSERT INTO `tb_reservasi` (`id_reservasi`, `id_user`, `id_lapangan`, `nama`, `hp`, `tanggal`, `masuk`, `keluar`, `total_harga`, `status`) VALUES
-(15, 17, 11, '', '', '2024-05-11', '20:08:00', '23:08:00', 0, 'Selesai'),
-(16, 16, 9, '', '', '2024-05-11', '21:04:00', '22:04:00', 0, 'Selesai'),
-(17, 16, 9, '', '', '2024-05-11', '20:42:00', '23:42:00', 0, 'Selesai'),
-(18, 16, 13, '', '', '2024-05-12', '20:49:00', '22:49:00', 0, 'Selesai'),
-(20, 17, 9, '', '', '2024-05-11', '03:26:33', '06:26:33', 0, 'Selesai'),
-(21, 16, 9, '', '', '2024-05-11', '00:04:00', '01:04:00', 0, 'Selesai'),
-(22, 16, 9, '', '', '2024-05-13', '03:04:00', '04:04:00', 0, 'Selesai'),
-(23, 16, 9, '', '', '2024-05-15', '15:15:00', '18:15:00', 0, 'Selesai'),
-(24, 16, 9, '', '', '2024-05-12', '04:16:00', '05:16:00', 0, 'Selesai'),
-(25, 16, 9, '', '', '2024-05-11', '01:05:00', '02:05:00', 0, 'Selesai'),
-(26, 16, 9, '67', '7', '2024-05-14', '02:26:00', '03:26:00', 0, 'Selesai'),
-(27, 16, 9, 'Andi', '0812323412132', '2024-05-12', '01:41:00', '02:41:00', 0, 'Selesai'),
-(28, 16, 9, 'Andi', '0812323412132', '2024-05-12', '05:41:00', '06:41:00', 200000, 'Selesai'),
-(29, 16, 10, 'Andi', '0812323412132', '2024-05-12', '01:47:00', '04:47:00', 60000, 'Selesai'),
-(30, 16, 9, 'UKM DIMENSI', '0812323412132', '2024-05-12', '18:24:00', '19:24:00', 200000, 'Selesai'),
-(31, 16, 10, 'Andi', '0812323412132', '2024-05-13', '01:22:00', '02:22:00', 20000, 'Selesai'),
-(32, 16, 10, 'Andi', '0812323412132', '2024-05-13', '04:33:00', '05:33:00', 20000, 'Selesai'),
-(33, 16, 13, 'Andi', '0812323412132', '2024-05-13', '01:38:00', '04:38:00', 750000, 'Selesai'),
 (34, 20, 12, 'Fikri', '08123131231', '2024-05-13', '01:51:00', '03:51:00', 40000, 'Sudah'),
-(35, 20, 9, 'Fikri', '08123131231', '2024-05-13', '01:52:00', '02:52:00', 200000, 'Selesai');
+(35, 20, 9, 'Fikri', '08123131231', '2024-05-13', '01:52:00', '02:52:00', 200000, 'Selesai'),
+(36, 22, 18, 'c', 'j', '2024-05-28', '04:54:00', '05:54:00', 23, 'Selesai');
 
 -- --------------------------------------------------------
 
@@ -162,11 +148,11 @@ CREATE TABLE `tb_users` (
 --
 
 INSERT INTO `tb_users` (`id_user`, `nama`, `alamat`, `hp`, `foto`, `username`, `password`, `role`) VALUES
-(2, 'Cahyo', 'Perintis', '08123343223', '1715499196.jpg', 'test', 'admin', 'admin'),
+(2, 'PUTRA', 'Perintis', '08123343223', '1715499196.jpg', 'test', 'admin', 'admin'),
 (3, 'Putra', 'Perintis', '08123343223', '2024-05-04', 'test', 'super', 'superadmin'),
-(16, 'Andi', 'Sekitaran PK7', '0812323412132', '1715225185.jpg', 'test', 'user', 'user'),
-(17, '8', 'asd', '8', '1715536226.jpg', 'asda', 'dasda', 'user'),
-(20, 'Fikri', 'Sudiang', '08123131231', '1715536234.jpg', 'fikri', 'fikri', 'user');
+(20, 'Fikri', 'Sudiang', '08123131231', '1715536234.jpg', 'fikri', 'fikri', 'user'),
+(22, 'c', 'j', 'j', '1716843263.jpg', 'n', 'n', 'user'),
+(24, 'Surya', 'Sudiang', '0808080', '1716912593.png', 'sudiangJaya', 'Sudianh13', 'user');
 
 -- --------------------------------------------------------
 
@@ -175,17 +161,17 @@ INSERT INTO `tb_users` (`id_user`, `nama`, `alamat`, `hp`, `foto`, `username`, `
 -- (See below for the actual view)
 --
 CREATE TABLE `view_reservasi` (
-`alamat` varchar(255)
-,`hp` varchar(255)
-,`id_lapangan` int
-,`id_reservasi` int
+`id_reservasi` int
 ,`id_user` int
-,`keluar` time
+,`id_lapangan` int
 ,`masuk` time
-,`nama` varchar(255)
-,`status` varchar(255)
 ,`tanggal` date
+,`keluar` time
+,`status` varchar(255)
 ,`total_harga` int
+,`nama` varchar(255)
+,`hp` varchar(255)
+,`alamat` varchar(255)
 );
 
 -- --------------------------------------------------------
@@ -254,7 +240,7 @@ ALTER TABLE `tb_users`
 -- AUTO_INCREMENT for table `tb_lapangan`
 --
 ALTER TABLE `tb_lapangan`
-  MODIFY `id_lapangan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_lapangan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `tb_laporan`
@@ -266,7 +252,7 @@ ALTER TABLE `tb_laporan`
 -- AUTO_INCREMENT for table `tb_reservasi`
 --
 ALTER TABLE `tb_reservasi`
-  MODIFY `id_reservasi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id_reservasi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `tb_transaksi`
@@ -278,7 +264,7 @@ ALTER TABLE `tb_transaksi`
 -- AUTO_INCREMENT for table `tb_users`
 --
 ALTER TABLE `tb_users`
-  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Constraints for dumped tables
@@ -288,8 +274,8 @@ ALTER TABLE `tb_users`
 -- Constraints for table `tb_reservasi`
 --
 ALTER TABLE `tb_reservasi`
-  ADD CONSTRAINT `tb_reservasi_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `tb_users` (`id_user`),
-  ADD CONSTRAINT `tb_reservasi_ibfk_2` FOREIGN KEY (`id_lapangan`) REFERENCES `tb_lapangan` (`id_lapangan`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tb_reservasi_ibfk_2` FOREIGN KEY (`id_lapangan`) REFERENCES `tb_lapangan` (`id_lapangan`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tb_reservasi_ibfk_3` FOREIGN KEY (`id_user`) REFERENCES `tb_users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

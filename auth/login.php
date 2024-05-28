@@ -15,7 +15,7 @@ switch($role){
         if (mysqli_num_rows($cek_user) > 0) {
             $_SESSION['id'] = $data_user['id_user'];
             $_SESSION['user'] = $data_user['nama'];
-            $_SESSION['login'] = $username;
+            $_SESSION['login'] = "user";
             exit('user');
         }else{
             exit('gagal'); 
@@ -24,9 +24,11 @@ switch($role){
     case 'admin':
         $sql_admin = "SELECT * FROM tb_users where username = '$username' AND password ='$password' AND role = '$role'";
         $cek_admin = mysqli_query($conn, $sql_admin);
+        $data_admin = mysqli_fetch_assoc($cek_admin);
         if (mysqli_num_rows($cek_admin) > 0) {
-            $_SESSION['user'] = "admin";
-            $_SESSION['login'] = $username;
+            $_SESSION['id'] = $data_admin['id_user'];
+            $_SESSION['user'] = $data_admin['nama'];
+            $_SESSION['login'] = "admin";
             exit('admin');
         }else{
             exit('gagal'); 
@@ -36,9 +38,11 @@ switch($role){
     case 'superadmin':
         $sql_superadmin = "SELECT * FROM tb_users where username = '$username' AND password ='$password' AND role = '$role'";
         $cek_superadmin = mysqli_query($conn, $sql_superadmin);
+        $data_superadmin = mysqli_fetch_assoc($cek_superadmin);
         if (mysqli_num_rows($cek_superadmin) > 0) {
-            $_SESSION['user'] = "superadmin";
-            $_SESSION['login'] = $username;
+            $_SESSION['id'] = $data_superadmin['id_user'];
+            $_SESSION['user'] = $data_superadmin['nama'];
+            $_SESSION['login'] = "superadmin";
             exit('superadmin');
         }else{
             exit('gagal'); 
