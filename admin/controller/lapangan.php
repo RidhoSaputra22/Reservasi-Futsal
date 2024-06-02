@@ -18,7 +18,7 @@ switch ($aksi) {
 
         $newfilename = uploadFoto($location);
 
-        $sql = "INSERT INTO `tb_lapangan` (`id_lapangan`, `kondisi`, `status`, `jenis`, `harga`, `deskripsi`, `foto`) VALUES (NULL, 'Baik', 'Tersedia', '$jenis', '$harga', '$deskripsi', '$newfilename')";
+        $sql = "INSERT INTO `tb_lapangan` (`id_lapangan`, `status`, `jenis`, `harga`, `deskripsi`, `foto`) VALUES (NULL, 'Tersedia', '$jenis', '$harga', '$deskripsi', '$newfilename')";
 
         if (mysqli_query($conn, $sql)) {
             exit("sukses");
