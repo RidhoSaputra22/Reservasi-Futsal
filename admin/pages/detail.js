@@ -2,7 +2,7 @@ console.log("Detail.js Called");
 
 const url = "controller/galeri.php";
 const page = "index.php?page=detail";
-let img = "../assets/img/produk/";
+let img = "../assets/img/lapangan/";
 
 
 function tambah() {

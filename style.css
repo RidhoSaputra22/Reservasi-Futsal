@@ -427,3 +427,22 @@ section {
 footer{
     color: #FFFFFF; 
 }
+
+.product-slider{
+    margin: 0 90px;
+    padding: 0px;  
+    height: 250px;
+    width: auto;
+    border: 2px solid white;
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: scroll;
+
+
+    img{
+    border: 2px solid white;
+
+        width: 250px;
+        height: 250px;
+    }
+}

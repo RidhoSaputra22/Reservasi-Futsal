@@ -81,6 +81,30 @@ if(isset($_SESSION['id'])){
 
         </div>
 
+
+    </section>
+    <?php
+    $q_galeri = "SELECT * FROM tb_galeri WHERE id_lapangan = '$_GET[id]'";
+    $res_galeri = mysqli_query($conn, $q_galeri);
+
+    if(mysqli_num_rows($res_galeri) >= 1){
+
+        
+        
+        ?>
+
+<section class="product-slider">
+    <?php
+                while($data_galeri = mysqli_fetch_assoc($res_galeri)){
+                    ?>
+                <a href="assets/img/lapangan/<?=$data_galeri['foto']?>">
+                    
+                <img src="assets/img/lapangan/<?=$data_galeri['foto']?>" alt="" srcset="">
+            </a>
+            
+            <?php
+        }
+        }?>
     </section>
 
     <section id="jadwal">
@@ -98,7 +122,6 @@ if(isset($_SESSION['id'])){
                 <?php
                 $q_l = "SELECT * FROM tb_reservasi WHERE id_lapangan = '$_GET[id]'";
                 $res_l = mysqli_query($conn, $q_l);
-                $count_l = 1;
                 while($data_l = mysqli_fetch_assoc($res_l)){
                 ?>
 
