@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 28, 2024 at 04:10 PM
+-- Generation Time: Jun 04, 2024 at 01:03 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -28,13 +28,40 @@ SET time_zone = "+00:00";
 -- (See below for the actual view)
 --
 CREATE TABLE `lapangan_kosong` (
-`id_reservasi` int
+`id_lapangan` int
+,`id_reservasi` int
 ,`id_user` int
-,`id_lapangan` int
-,`masuk` time
 ,`keluar` time
+,`masuk` time
 ,`status` varchar(255)
 );
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_galeri`
+--
+
+CREATE TABLE `tb_galeri` (
+  `id_galeri` int NOT NULL,
+  `id_lapangan` int NOT NULL,
+  `foto` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tb_galeri`
+--
+
+INSERT INTO `tb_galeri` (`id_galeri`, `id_lapangan`, `foto`) VALUES
+(1, 18, '1717440276.png'),
+(2, 18, '1717440269.jpg'),
+(4, 10, '1717440305.jpg'),
+(5, 10, '1717441070.JPG'),
+(6, 10, '1717441076.JPG'),
+(7, 10, '1717441082.JPG'),
+(8, 10, '1717441091.JPG'),
+(9, 10, '1717441098.JPG'),
+(10, 11, '1717441605.JPG');
 
 -- --------------------------------------------------------
 
@@ -44,7 +71,6 @@ CREATE TABLE `lapangan_kosong` (
 
 CREATE TABLE `tb_lapangan` (
   `id_lapangan` int NOT NULL,
-  `kondisi` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL,
   `jenis` varchar(255) NOT NULL,
   `harga` int NOT NULL,
@@ -56,16 +82,18 @@ CREATE TABLE `tb_lapangan` (
 -- Dumping data for table `tb_lapangan`
 --
 
-INSERT INTO `tb_lapangan` (`id_lapangan`, `kondisi`, `status`, `jenis`, `harga`, `deskripsi`, `foto`) VALUES
-(9, 'Baik', 'Tersedia', 'Biasa', 200000, 'Lapangan dengan rumput sintetis', '1715225235.jpg'),
-(10, 'Baik', 'Tersedia', 'Biasa', 20000, 'Lapangan Bagus', '1715225398.jpg'),
-(11, 'Baik', 'ok', 'Biasa', 20000, 'kkks', '1715463268.jpg'),
-(12, 'Baik', 'ok', 'Biasa', 20000, 'kkks', '1715463288.jpg'),
-(13, 'Baik', 'ok', 'Biasa', 250000, 'kkks', '1715463318.jpg'),
-(15, 'Baik', 'Tersedia', '131', 75000, 'jbjb', '1715519452.jpg'),
-(16, 'Baik', 'Tersedia', 'Sintetis', 120000, 'bla', '1716836069.jpg'),
-(17, 'Baik', 'Tersedia', 'Rumput Asli', 2432, 'q42q', '1716836113.jpg'),
-(18, 'Baik', 'Tersedia', 'Rumput Biasa', 23, '2432', '1716836340.png');
+INSERT INTO `tb_lapangan` (`id_lapangan`, `status`, `jenis`, `harga`, `deskripsi`, `foto`) VALUES
+(9, 'Tersedia', 'Biasa', 200000, 'Lapangan dengan rumput sintetis', '1715225235.jpg'),
+(10, 'Tersedia', 'Biasa', 20000, 'Lapangan Bagus', '1715225398.jpg'),
+(11, 'ok', 'Biasa', 20000, 'kkks', '1715463268.jpg'),
+(12, 'ok', 'Biasa', 20000, 'kkks', '1715463288.jpg'),
+(13, 'ok', 'Biasa', 250000, 'kkks', '1715463318.jpg'),
+(15, 'Tersedia', '131', 75000, 'jbjb', '1715519452.jpg'),
+(16, 'Tersedia', 'Sintetis', 120000, 'bla', '1716836069.jpg'),
+(17, 'Tersedia', 'Rumput Asli', 2432, 'q42q', '1716836113.jpg'),
+(18, 'Tersedia', 'Rumput Biasa', 23, '2432', '1716836340.png'),
+(19, 'Tersedia', 'Rumput Biasa', 12000, 'hhg', '1716955582.jpg'),
+(20, 'Tersedia', 'Rumput Biasa', 23123, '4324', '1717350835.jpg');
 
 -- --------------------------------------------------------
 
@@ -152,7 +180,8 @@ INSERT INTO `tb_users` (`id_user`, `nama`, `alamat`, `hp`, `foto`, `username`, `
 (3, 'Putra', 'Perintis', '08123343223', '2024-05-04', 'test', 'super', 'superadmin'),
 (20, 'Fikri', 'Sudiang', '08123131231', '1715536234.jpg', 'fikri', 'fikri', 'user'),
 (22, 'c', 'j', 'j', '1716843263.jpg', 'n', 'n', 'user'),
-(24, 'Surya', 'Sudiang', '0808080', '1716912593.png', 'sudiangJaya', 'Sudianh13', 'user');
+(24, 'Surya', 'Sudiang', '0808080', '1716912593.png', 'sudiangJaya', 'Sudianh13', 'user'),
+(25, 'fikal', 'Perintis', '082234234229', '1716955704.jpg', 'fikal', 'eja', 'user');
 
 -- --------------------------------------------------------
 
@@ -161,17 +190,17 @@ INSERT INTO `tb_users` (`id_user`, `nama`, `alamat`, `hp`, `foto`, `username`, `
 -- (See below for the actual view)
 --
 CREATE TABLE `view_reservasi` (
-`id_reservasi` int
-,`id_user` int
-,`id_lapangan` int
-,`masuk` time
-,`tanggal` date
-,`keluar` time
-,`status` varchar(255)
-,`total_harga` int
-,`nama` varchar(255)
+`alamat` varchar(255)
 ,`hp` varchar(255)
-,`alamat` varchar(255)
+,`id_lapangan` int
+,`id_reservasi` int
+,`id_user` int
+,`keluar` time
+,`masuk` time
+,`nama` varchar(255)
+,`status` varchar(255)
+,`tanggal` date
+,`total_harga` int
 );
 
 -- --------------------------------------------------------
@@ -195,6 +224,13 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `tb_galeri`
+--
+ALTER TABLE `tb_galeri`
+  ADD PRIMARY KEY (`id_galeri`),
+  ADD KEY `id_lapangan` (`id_lapangan`);
 
 --
 -- Indexes for table `tb_lapangan`
@@ -237,10 +273,16 @@ ALTER TABLE `tb_users`
 --
 
 --
+-- AUTO_INCREMENT for table `tb_galeri`
+--
+ALTER TABLE `tb_galeri`
+  MODIFY `id_galeri` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT for table `tb_lapangan`
 --
 ALTER TABLE `tb_lapangan`
-  MODIFY `id_lapangan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_lapangan` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tb_laporan`
@@ -264,11 +306,17 @@ ALTER TABLE `tb_transaksi`
 -- AUTO_INCREMENT for table `tb_users`
 --
 ALTER TABLE `tb_users`
-  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `tb_galeri`
+--
+ALTER TABLE `tb_galeri`
+  ADD CONSTRAINT `tb_galeri_ibfk_1` FOREIGN KEY (`id_lapangan`) REFERENCES `tb_lapangan` (`id_lapangan`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tb_reservasi`
