@@ -184,6 +184,7 @@ require "../conn.php"
 
                     <label for="" class="mt-3">Deskripsi</label>
                     <textarea name="" id="udeskripsi" class="form-control" rows="5"></textarea>
+                    
                     <p for="" class="mt-3">Foto</p>
                     <!-- <img src="uploads/img/" alt="" style="width:150px; height: 100px"> -->
                     <input type="file" class="form-control mt-3" id="ufoto" onchange="return validasiFile1()">
