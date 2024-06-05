@@ -4,9 +4,10 @@ session_start();
 if ($_SESSION['login']=="") {
 	// header("Location: dashboard.php");
 	echo '<script>window.location="../login.php"</script>';
-} else if($_SESSION['login']!="admin") {
-	echo '<script>window.location="../index.php"</script>';
-}
+} 
+// else if($_SESSION['login']!="superadmin") {
+// 	echo '<script>window.location="../index.php"</script>';
+// }
 
 // require '../conn.php';
 

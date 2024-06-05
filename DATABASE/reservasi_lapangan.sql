@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 04, 2024 at 01:03 AM
+-- Generation Time: Jun 05, 2024 at 02:54 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -28,11 +28,11 @@ SET time_zone = "+00:00";
 -- (See below for the actual view)
 --
 CREATE TABLE `lapangan_kosong` (
-`id_lapangan` int
-,`id_reservasi` int
+`id_reservasi` int
 ,`id_user` int
-,`keluar` time
+,`id_lapangan` int
 ,`masuk` time
+,`keluar` time
 ,`status` varchar(255)
 );
 
@@ -190,17 +190,17 @@ INSERT INTO `tb_users` (`id_user`, `nama`, `alamat`, `hp`, `foto`, `username`, `
 -- (See below for the actual view)
 --
 CREATE TABLE `view_reservasi` (
-`alamat` varchar(255)
-,`hp` varchar(255)
-,`id_lapangan` int
-,`id_reservasi` int
+`id_reservasi` int
 ,`id_user` int
-,`keluar` time
+,`id_lapangan` int
 ,`masuk` time
-,`nama` varchar(255)
-,`status` varchar(255)
 ,`tanggal` date
+,`keluar` time
+,`status` varchar(255)
 ,`total_harga` int
+,`nama` varchar(255)
+,`hp` varchar(255)
+,`alamat` varchar(255)
 );
 
 -- --------------------------------------------------------
