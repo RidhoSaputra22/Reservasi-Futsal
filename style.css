@@ -205,6 +205,7 @@ section {
     border-radius: 10px;
 
     img{
+        width: 100px;
         height: 440px;
         width: auto;
         border: 10px solid #FFFFFF;

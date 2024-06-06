@@ -7,7 +7,7 @@ $URL = "index.php"
 
 <nav>
     <div class="logo">
-        <a href="<?= $URL?>">Reservasi Futsal</a>
+        <a href="<?= $URL?>">Reservasi Futsal v.1.0</a>
     </div>
     <div class="navbar">
         <ul>
