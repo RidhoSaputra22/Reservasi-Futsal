@@ -1,13 +1,11 @@
 <?php
 session_start();
 
-if ($_SESSION['login']=="") {
+if ($_SESSION['login'] != "superadmin") {
 	// header("Location: dashboard.php");
 	echo '<script>window.location="../login.php"</script>';
 } 
-// else if($_SESSION['user']!="superadmin") {
-// 	echo '<script>window.location="../index.php"</script>';
-// }
+
 ?>
 
 <!DOCTYPE html>
