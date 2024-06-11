@@ -2,8 +2,6 @@
 session_start();
 require "conn.php";
 
-$req = mysqli_query($conn, "SELECT * FROM tb_lapangan WHERE id_lapangan = '$_GET[id]'");
-$data = mysqli_fetch_assoc($req);
 
 $now_date = Date('Y-m-d');
 $now_time = Date('H:i');

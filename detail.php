@@ -36,34 +36,20 @@ if(isset($_SESSION['id'])){
     <!-- JQUERY -->
     <script src="assets/jquery/dist/jquery.min.js"></script>
     <script src="assets/DataTables/datatables.js"></script>
-
     <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
         data-client-key="SB-Mid-client-Sh3wGKHVSP3NM6lF" async></script>
-
-
-
     <link rel="stylesheet" href="assets/DataTables/datatables.css">
-
     <!-- SWEETALERT -->
     <link rel="stylesheet" href="assets/sweetalert2/dist/sweetalert2.min.css">
     <script src="assets/sweetalert2/dist/sweetalert2.min.js"></script>
 </head>
-
 <body>
-
-
-
     <?php
     include("layout/navbar.php");
-    
     ?>
-
-
-
     <section id="detail-product">
         <img src="assets/img/lapangan/<?= $data['foto']?>" alt="">
         <div class="detail">
-
             <div class="text">
                 <div class="title">Lapangan <?= $data['id_lapangan']?></div>
                 <div class="subtitle">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores nesciunt
